@@ -158,6 +158,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-常用正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/14/常用正则表达式/">常用正则表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/14/常用正则表达式/" class="archive-article-date">
+  	<time datetime="2017-04-14T06:11:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>收集常用javascript正则表达式</p>
+<p>###中国手机号<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkphone</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^(?=\d&#123;11&#125;$)^1(?:3\d|4[57]|5[^4\D]|7[^249\D]|8\d)\d&#123;8&#125;$/</span>;</div><div class="line">  <span class="keyword">return</span> reg.test(str);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>###邮箱<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkemail</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]&#123;2,3&#125;)&#123;1,2&#125;)$/</span>;</div><div class="line">  <span class="keyword">return</span> reg.test(str);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>###6~20位数字字母混合密码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkpwd</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]&#123;6,20&#125;$/</span>;</div><div class="line">  <span class="keyword">return</span> reg.test(str);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/14/常用正则表达式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-博客开张啦" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
