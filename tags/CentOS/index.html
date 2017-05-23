@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//thomsontmx.github.io">
-  <title>星火传薪</title>
+  <title>Tag: CentOS | 星火传薪</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一枚小小前端程序猿。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="星火传薪">
-<meta property="og:url" content="//thomsontmx.github.io/index.html">
+<meta property="og:url" content="//thomsontmx.github.io/tags/CentOS/index.html">
 <meta property="og:site_name" content="星火传薪">
 <meta property="og:description" content="一枚小小前端程序猿。">
 <meta name="twitter:card" content="summary">
@@ -158,46 +158,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Linux安全设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/05/17/Linux安全设置/" class="archive-article-date">
+  	<time datetime="2017-05-17T09:59:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/Linux安全设置/">Linux安全设置</a>
+      <a class="archive-article-title" href="/2017/05/17/Linux安全设置/">Linux安全设置</a>
     </h1>
   
 
-        
-        <a href="/2017/05/17/Linux安全设置/" class="archive-article-date">
-  	<time datetime="2017-05-17T09:59:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p><strong>1.修改SSH端口，例如1024</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_config</div></pre></td></tr></table></figure></p>
-<p>找到Port 22，修改22为1024</p>
-<p><strong>2.开启防火墙</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld</div></pre></td></tr></table></figure></p>
-<p>如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”<br>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl unmask firewalld.service</div><div class="line">systemctl start firewalld.service</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --zone=public --add-port=1024/tcp</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
-<p><strong>3.重启ssh服务</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart sshd.service</div></pre></td></tr></table></figure></p>
-<p>4.firewall-cmd配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent <span class="comment">##开启80端口</span></div><div class="line">firewall-cmd --reload <span class="comment">##更新防火墙规则</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --remove-port=80/tcp --permanent <span class="comment">##删除80端口</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --list-ports <span class="comment">##显示已开放的端口</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --state</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld <span class="comment">##启动防火墙</span></div><div class="line">systemctl stop firewalld <span class="comment">##关闭防火墙</span></div><div class="line">systemctl <span class="built_in">disable</span> firewalld <span class="comment">##禁用防火墙</span></div><div class="line">systemctl status firewalld <span class="comment">##查看防火墙状态</span></div></pre></td></tr></table></figure>
-<p>更多配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --version <span class="comment">##查看版本</span></div><div class="line">firewall-cmd --help <span class="comment">##查看帮助</span></div><div class="line">firewall-cmd --get-active-zones <span class="comment">##查看区域信息</span></div><div class="line">firewall-cmd --get-zone-of-interface=eth0 <span class="comment">##查看指定接口所属区域</span></div><div class="line">firewall-cmd --panic-on <span class="comment">##拒绝所有包</span></div><div class="line">firewall-cmd --panic-off <span class="comment">##取消拒绝状态</span></div><div class="line">firewall-cmd --query-panic <span class="comment">##查看是否拒绝</span></div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -209,388 +197,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/17/Linux安全设置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
-
-
-
   
-    <article id="post-听听音乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/08/听听音乐/">听听音乐</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/08/听听音乐/" class="archive-article-date">
-  	<time datetime="2017-05-08T05:51:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script>
-			<div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"></div>
-			<script>
-				var options = {"narrow":false,"autoplay":true,"showlrc":3,"mode":"random","mutex":true,"theme":"#e6d0b2","preload":"metadata","listmaxheight":"513px","music":[{"title":"甘心情愿","author":"郭峰","url":"//static.apitool.net/music/gxqy.ogg","pic":"//p1.music.126.net/zmNOqw4HET3ogTiVMhifcg==/40681930243414.jpg"},{"title":"青衣谣","author":"郁可唯","url":"//static.apitool.net/music/qyy.ogg","pic":"http://p1.music.126.net/-aA7WIk6qAeVYKwWH5aFWg==/3393092895861214.jpg"},{"title":"Right Here Waiting","author":"Richard Marx","url":"//static.apitool.net/music/Right Here Waiting.ogg","pic":"http://p1.music.126.net/_62h3kA2WCrYEXWL0yaJ7Q==/1743825441658717.jpg"},{"title":"凉凉","author":"杨宗纬&张碧晨","url":"https://static.apitool.net/music/ll.mp3","pic":"https://y.gtimg.cn/music/photo_new/T002R300x300M0000011IIJE3XYf9L.jpg?max_age=2592000"}]};
-				options.element = document.getElementById("aplayer0");
-				new APlayer(options);
-			</script>
-
-		
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">music</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/08/听听音乐/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-安装常用插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/安装常用插件/">安装常用插件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/安装常用插件/" class="archive-article-date">
-  	<time datetime="2017-04-27T08:08:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p><strong>1.安装cnpm</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<p><strong>2.安装Hexo</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cnpm install hexo-cli -g</div></pre></td></tr></table></figure></p>
-<p><strong>3.安装express</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cnpm install express -g</div></pre></td></tr></table></figure></p>
-<p><strong>4.安装gulp</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cnpm install gulp -g</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/安装常用插件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-编译安装Node.js" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/编译安装Node.js/">编译安装Node.js</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/编译安装Node.js/" class="archive-article-date">
-  	<time datetime="2017-04-27T07:52:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p><strong>1.下载源码包</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://nodejs.org/dist/v6.10.2/node-v6.10.2.tar.gz</div></pre></td></tr></table></figure></p>
-<p><strong>2.解压源码包</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo tar -zxvf node-v6.10.2.tar.gz</div></pre></td></tr></table></figure></p>
-<p><strong>3.重命名目录</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mv node-v6.10.2/ nodejs/</div></pre></td></tr></table></figure></p>
-<p><strong>4.编译</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd nodejs</div><div class="line">sudo ./configure</div><div class="line">sudo make</div><div class="line">sudo make install</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/编译安装Node.js/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-HTML5五大特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/HTML5五大特性/">HTML5五大特性</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/18/HTML5五大特性/" class="archive-article-date">
-  	<time datetime="2017-04-18T06:00:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p>HTML5技术中有这样5个特性，它们能够让你实现事半功倍的开发效果，它们分别是：DNS Prefetching、Link Prefetching、Download属性、Regular Expressions以及Datalist元素。</p>
-<p><strong>1. DNS Prefetching</strong></p>
-<p>DNS Prefetching特性允许开发者手动控制，告诉浏览器需要解析哪个域名。代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//fonts.googleapis.com"</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p><strong>2. Link Prefetching</strong></p>
-<p>Link Prefetching特性允许开发者在页面加载的时候预先加载他们希望指定的页面或元素。代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"prefetch"</span> <span class="attr">href</span>=<span class="string">"http://daker.me/2013/05/hello-world.html"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"prefetch"</span> <span class="attr">href</span>=<span class="string">"http://daker.me/assets/images/avatar.png"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
-<p>你也能够使用prerendering特性令你的网站速度更快，浏览器能够在后台获取并渲染整个页面，用户点击相应链接时再为用户展示该页面。代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"prerender"</span> <span class="attr">href</span>=<span class="string">"http://daker.me/2013/05/hello-world.html"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
-<p><strong>3. Download属性</strong></p>
-<p>凭借HTML5的Download属性，开发者可以不必到特定页面下载文件，而是直接进行下载。这一操作不必依赖服务器端代码便能够执行。代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"download_pdf.php?id=15"</span> <span class="attr">download</span>=<span class="string">"myfile.pdf"</span>&gt;</span>Download PDF<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p><strong>4. Regular Expressions</strong><br>一旦用户输入一个有效的email或URL地址，pattern属性可以令你直接使用regular expressions而无需检查JS或服务器端代码。代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">pattern</span>=<span class="string">"^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]&#123;2,3&#125;)&#123;1,2&#125;)$*"</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p><strong>5. Datalist元素</strong><br>若使用jQuery插件执行自动填充输入操作，则用户每敲击一次键盘都要访问服务器端代码以及数据库。但有了Datalist元素，开发者不必再使用jQuery插件便可完成该操作。代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"form.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">list</span>=<span class="string">"cars"</span> <span class="attr">name</span>=<span class="string">"cars"</span> &gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">"cars"</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Volvo"</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"BMW"</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Bugatti"</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Cadillac"</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Chevrolet"</span>&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Chrysler"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">datalist</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> /&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>文章转载自：<a href="http://daker.me/2013/05/5-html5-features-you-need-to-know.html" target="_blank" rel="external">http://daker.me/2013/05/5-html5-features-you-need-to-know.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/18/HTML5五大特性/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-常用正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/14/常用正则表达式/">常用正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/14/常用正则表达式/" class="archive-article-date">
-  	<time datetime="2017-04-14T06:11:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p>收集常用javascript正则表达式</p>
-<h3 id="中国手机号"><a href="#中国手机号" class="headerlink" title="中国手机号"></a>中国手机号</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkphone</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^(?=\d&#123;11&#125;$)^1(?:3\d|4[57]|5[^4\D]|7[^249\D]|8\d)\d&#123;8&#125;$/</span>;</div><div class="line">  <span class="keyword">return</span> reg.test(str);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkemail</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]&#123;2,3&#125;)&#123;1,2&#125;)$/</span>;</div><div class="line">  <span class="keyword">return</span> reg.test(str);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="6-20位数字字母混合密码"><a href="#6-20位数字字母混合密码" class="headerlink" title="6~20位数字字母混合密码"></a>6~20位数字字母混合密码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkpwd</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]&#123;6,20&#125;$/</span>;</div><div class="line">  <span class="keyword">return</span> reg.test(str);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/14/常用正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-博客开张啦" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/28/博客开张啦/">博客开张啦</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/28/博客开张啦/" class="archive-article-date">
-  	<time datetime="2017-03-28T06:05:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p>作为一名前端怎么可以没有自己的博客，so！我的博客因此开通啦！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/28/博客开张啦/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
 
 
           </div>
@@ -612,10 +231,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
