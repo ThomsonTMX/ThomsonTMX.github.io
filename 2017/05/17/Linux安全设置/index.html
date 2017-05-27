@@ -20,7 +20,7 @@
 找到Port 22，修改22为1024
 2.开启防火墙1systemctl start firewalld
 如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”执行12systemctl unmask firewalld">
-<meta property="og:updated_time" content="2017-05-23T05:53:08.035Z">
+<meta property="og:updated_time" content="2017-05-27T06:27:27.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux安全设置">
 <meta name="twitter:description" content="1.修改SSH端口，例如10241vi /etc/ssh/sshd_config
@@ -192,12 +192,13 @@
 <p>如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”<br>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl unmask firewalld.service</div><div class="line">systemctl start firewalld.service</div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --zone=public --add-port=1024/tcp</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
 <p><strong>3.重启ssh服务</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart sshd.service</div></pre></td></tr></table></figure></p>
-<p>4.firewall-cmd配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent <span class="comment">##开启80端口</span></div><div class="line">firewall-cmd --reload <span class="comment">##更新防火墙规则</span></div></pre></td></tr></table></figure></p>
+<p><strong>4.firewall-cmd配置</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent <span class="comment">##开启80端口</span></div><div class="line">firewall-cmd --reload <span class="comment">##更新防火墙规则</span></div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --remove-port=80/tcp --permanent <span class="comment">##删除80端口</span></div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --list-ports <span class="comment">##显示已开放的端口</span></div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --state</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld <span class="comment">##启动防火墙</span></div><div class="line">systemctl stop firewalld <span class="comment">##关闭防火墙</span></div><div class="line">systemctl <span class="built_in">disable</span> firewalld <span class="comment">##禁用防火墙</span></div><div class="line">systemctl status firewalld <span class="comment">##查看防火墙状态</span></div></pre></td></tr></table></figure>
 <p>更多配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --version <span class="comment">##查看版本</span></div><div class="line">firewall-cmd --help <span class="comment">##查看帮助</span></div><div class="line">firewall-cmd --get-active-zones <span class="comment">##查看区域信息</span></div><div class="line">firewall-cmd --get-zone-of-interface=eth0 <span class="comment">##查看指定接口所属区域</span></div><div class="line">firewall-cmd --panic-on <span class="comment">##拒绝所有包</span></div><div class="line">firewall-cmd --panic-off <span class="comment">##取消拒绝状态</span></div><div class="line">firewall-cmd --query-panic <span class="comment">##查看是否拒绝</span></div></pre></td></tr></table></figure></p>
+<p><strong>5.查看登录失败者的IP</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep <span class="string">"Failed password for root"</span> /var/<span class="built_in">log</span>/secure | awk <span class="string">'&#123;print $11&#125;'</span> | sort | uniq -c | sort -nr | more</div></pre></td></tr></table></figure></p>
 
       
 
@@ -387,11 +388,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -399,7 +396,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
             
             <div class="clearfix"></div>
