@@ -9,24 +9,18 @@
   <title>Linux安全设置 | 星火传薪</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1.修改SSH端口，例如10241vi /etc/ssh/sshd_config
-找到Port 22，修改22为1024
-2.开启防火墙1systemctl start firewalld
-如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”执行12systemctl unmask firewalld">
+找到Port 22，修改22为1024">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux安全设置">
 <meta property="og:url" content="//thomsontmx.github.io/2017/05/17/Linux安全设置/index.html">
 <meta property="og:site_name" content="星火传薪">
 <meta property="og:description" content="1.修改SSH端口，例如10241vi /etc/ssh/sshd_config
-找到Port 22，修改22为1024
-2.开启防火墙1systemctl start firewalld
-如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”执行12systemctl unmask firewalld">
-<meta property="og:updated_time" content="2017-05-27T06:27:27.332Z">
+找到Port 22，修改22为1024">
+<meta property="og:updated_time" content="2017-10-26T07:52:37.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux安全设置">
 <meta name="twitter:description" content="1.修改SSH端口，例如10241vi /etc/ssh/sshd_config
-找到Port 22，修改22为1024
-2.开启防火墙1systemctl start firewalld
-如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”执行12systemctl unmask firewalld">
+找到Port 22，修改22为1024">
   
     <link rel="alternative" href="/atom.xml" title="星火传薪" type="application/atom+xml">
   
@@ -187,8 +181,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <script src="/assets/js/APlayer.min.js"> </script><p><strong>1.修改SSH端口，例如1024</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_config</div></pre></td></tr></table></figure></p>
-<p>找到Port 22，修改22为1024</p>
-<p><strong>2.开启防火墙</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld</div></pre></td></tr></table></figure></p>
+<p>找到Port 22，修改22为1024<br><a id="more"></a><br><strong>2.开启防火墙</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld</div></pre></td></tr></table></figure></p>
 <p>如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”<br>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl unmask firewalld.service</div><div class="line">systemctl start firewalld.service</div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --zone=public --add-port=1024/tcp</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
 <p><strong>3.重启ssh服务</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart sshd.service</div></pre></td></tr></table></figure></p>
@@ -281,6 +274,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/10/26/Ubuntu-17-10安装后需要做的事情/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Ubuntu 17.10安装后需要做的事情
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/08/听听音乐/" id="article-nav-older" class="article-nav-link-wrap">

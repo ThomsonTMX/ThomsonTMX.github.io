@@ -158,6 +158,64 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Ubuntu-17-10安装后需要做的事情" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/26/Ubuntu-17-10安装后需要做的事情/">Ubuntu 17.10安装后需要做的事情</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/26/Ubuntu-17-10安装后需要做的事情/" class="archive-article-date">
+  	<time datetime="2017-10-26T06:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-修改软件源为阿里云"><a href="#1-修改软件源为阿里云" class="headerlink" title="1.修改软件源为阿里云"></a>1.修改软件源为阿里云</h2><ol>
+<li>在软件包管理中心“软件源”中选择“中国的服务器”下mirros.aliyun.com即可自动使用。</li>
+<li>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/apt/sources.list</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ artful main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ artful-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ artful-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ artful-proposed main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ artful-backports main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ artful main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ artful-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ artful-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ artful-proposed main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ artful-backports main restricted universe multiverse</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/10/26/Ubuntu-17-10安装后需要做的事情/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/26/Ubuntu-17-10安装后需要做的事情/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Linux安全设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,20 +236,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><p><strong>1.修改SSH端口，例如1024</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_config</div></pre></td></tr></table></figure></p>
-<p>找到Port 22，修改22为1024</p>
-<p><strong>2.开启防火墙</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld</div></pre></td></tr></table></figure></p>
-<p>如果报错“Failed to start firewalld.service: Unit firewalld.service is masked.”<br>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl unmask firewalld.service</div><div class="line">systemctl start firewalld.service</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --zone=public --add-port=1024/tcp</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
-<p><strong>3.重启ssh服务</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart sshd.service</div></pre></td></tr></table></figure></p>
-<p><strong>4.firewall-cmd配置</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent <span class="comment">##开启80端口</span></div><div class="line">firewall-cmd --reload <span class="comment">##更新防火墙规则</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --remove-port=80/tcp --permanent <span class="comment">##删除80端口</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --list-ports <span class="comment">##显示已开放的端口</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --state</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld <span class="comment">##启动防火墙</span></div><div class="line">systemctl stop firewalld <span class="comment">##关闭防火墙</span></div><div class="line">systemctl <span class="built_in">disable</span> firewalld <span class="comment">##禁用防火墙</span></div><div class="line">systemctl status firewalld <span class="comment">##查看防火墙状态</span></div></pre></td></tr></table></figure>
-<p>更多配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --version <span class="comment">##查看版本</span></div><div class="line">firewall-cmd --help <span class="comment">##查看帮助</span></div><div class="line">firewall-cmd --get-active-zones <span class="comment">##查看区域信息</span></div><div class="line">firewall-cmd --get-zone-of-interface=eth0 <span class="comment">##查看指定接口所属区域</span></div><div class="line">firewall-cmd --panic-on <span class="comment">##拒绝所有包</span></div><div class="line">firewall-cmd --panic-off <span class="comment">##取消拒绝状态</span></div><div class="line">firewall-cmd --query-panic <span class="comment">##查看是否拒绝</span></div></pre></td></tr></table></figure></p>
-<p><strong>5.查看登录失败者的IP</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep <span class="string">"Failed password for root"</span> /var/<span class="built_in">log</span>/secure | awk <span class="string">'&#123;print $11&#125;'</span> | sort | uniq -c | sort -nr | more</div></pre></td></tr></table></figure></p>
-
+        <p><strong>1.修改SSH端口，例如1024</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_config</div></pre></td></tr></table></figure></p>
+<p>找到Port 22，修改22为1024<br>
+        
+          <a class="article-more-a" href="/2017/05/17/Linux安全设置/#more">more >></a>
+        
       
 
       
@@ -255,7 +304,7 @@
         <script src="/assets/js/APlayer.min.js"> </script>
 			<div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"></div>
 			<script>
-				var options = {"narrow":false,"autoplay":true,"showlrc":3,"mode":"random","mutex":true,"theme":"#e6d0b2","preload":"metadata","listmaxheight":"513px","music":[{"title":"甘心情愿","author":"郭峰","url":"//static.apitool.net/music/gxqy.ogg","pic":"//p1.music.126.net/zmNOqw4HET3ogTiVMhifcg==/40681930243414.jpg"},{"title":"青衣谣","author":"郁可唯","url":"//static.apitool.net/music/qyy.ogg","pic":"http://p1.music.126.net/-aA7WIk6qAeVYKwWH5aFWg==/3393092895861214.jpg"},{"title":"Right Here Waiting","author":"Richard Marx","url":"//static.apitool.net/music/Right Here Waiting.ogg","pic":"http://p1.music.126.net/_62h3kA2WCrYEXWL0yaJ7Q==/1743825441658717.jpg"},{"title":"凉凉","author":"杨宗纬&张碧晨","url":"https://static.apitool.net/music/ll.mp3","pic":"https://y.gtimg.cn/music/photo_new/T002R300x300M0000011IIJE3XYf9L.jpg?max_age=2592000"}]};
+				var options = {"narrow":false,"autoplay":false,"showlrc":3,"mode":"random","mutex":true,"theme":"#e6d0b2","preload":"metadata","listmaxheight":"513px","music":[{"title":"甘心情愿","author":"郭峰","url":"//static.apitool.net/music/gxqy.ogg","pic":"//p1.music.126.net/zmNOqw4HET3ogTiVMhifcg==/40681930243414.jpg"},{"title":"青衣谣","author":"郁可唯","url":"//static.apitool.net/music/qyy.ogg","pic":"http://p1.music.126.net/-aA7WIk6qAeVYKwWH5aFWg==/3393092895861214.jpg"},{"title":"Right Here Waiting","author":"Richard Marx","url":"//static.apitool.net/music/Right Here Waiting.ogg","pic":"http://p1.music.126.net/_62h3kA2WCrYEXWL0yaJ7Q==/1743825441658717.jpg"},{"title":"凉凉","author":"杨宗纬&张碧晨","url":"https://static.apitool.net/music/ll.mp3","pic":"https://y.gtimg.cn/music/photo_new/T002R300x300M0000011IIJE3XYf9L.jpg?max_age=2592000"}]};
 				options.element = document.getElementById("aplayer0");
 				new APlayer(options);
 			</script>
@@ -553,7 +602,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <script src="/assets/js/APlayer.min.js"> </script><p>作为一名前端怎么可以没有自己的博客，so！我的博客因此开通啦！</p>
-
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=426341501&auto=0&height=66"></iframe>
       
 
       
